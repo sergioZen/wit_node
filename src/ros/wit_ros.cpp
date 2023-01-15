@@ -1,6 +1,7 @@
 #include "../../include/wit_node/wit_ros.hpp"
 #include <float.h>
-#include <tf/tf.h>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <ecl/streams/string_stream.hpp>
 #include <string>
 
@@ -104,8 +105,14 @@ void WitRos::processStreamData() {
     imu_msg.linear_acceleration.y = data.a[1];
     imu_msg.linear_acceleration.z = data.a[2];
 
+    tf2::Quaternion quaternion_tf2;
+    quaternion_tf2.setRPY(data.rpy[0], data.rpy[1], data.rpy[2]);
+    geometry_msgs::Quaternion quaternion = tf2::toMsg(quaternion_tf2);   
+
+    /*
     imu_msg.orientation = tf::createQuaternionMsgFromRollPitchYaw(
         data.rpy[0], data.rpy[1], data.rpy[2]);
+    */
 
     imu_msg.orientation_covariance =
     {0.001, 0.0,    0.0,
