@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+	<node pkg="wit_node" type="initialization" name="wit_node_test" output="screen"/>
+	
+</launch>

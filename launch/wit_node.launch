@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+	<node pkg="wit_node" type="wit_node" name="wit_node" output="screen">
+		<param name="wit_node_port_" value="/dev/ttyUSB0"/>
+    	<param name="baut_rate_" value="9600"/>
+	</node>
+	
+</launch>

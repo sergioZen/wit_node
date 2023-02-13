@@ -2,7 +2,6 @@
 
 wit_node fork that fixes erros for working with TF2, and WT901B 9600 bauds
 
-This is the ROS nodelet package for wit motion company imu and gps sensor. Providing driver, ros driver and nodelet intergrating program.
 
 This is a fork from:
 
