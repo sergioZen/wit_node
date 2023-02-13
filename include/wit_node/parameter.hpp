@@ -5,9 +5,9 @@ using namespace std;
 namespace wit {
 class Parameter {
  public:
-  Parameter() : port_("/dev/ttyUSB0"), baut_rate_(115200), ns("wit") {}
+  Parameter() : wit_node_port_("/dev/ttyUSB0"), baut_rate_(9600), ns("wit") {}
 
-  string port_;
+  string wit_node_port_;
   int baut_rate_;
   string ns;
 };
