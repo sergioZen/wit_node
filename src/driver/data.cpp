@@ -110,12 +110,14 @@ bool Data::desLola(ecl::PushAndPop<unsigned char> &byteStream) {
 }
 bool Data::desMag(ecl::PushAndPop<unsigned char> &byteStream) {
   int16_t tmp;
+
+  // Fill magnetic field strengths (convert from uT to T)
   buildVariable(tmp, byteStream); // magx
-  imugps_.mag[0] = tmp;
+  imugps_.mag[0] = tmp * 0.000001;
   buildVariable(tmp, byteStream); // magy
-  imugps_.mag[1] = tmp;
+  imugps_.mag[1] = tmp * 0.000001;
   buildVariable(tmp, byteStream); // magz
-  imugps_.mag[2] = tmp;
+  imugps_.mag[2] = tmp * 0.000001;
   buildVariable(tmp, byteStream);
   imugps_.temperature = tmp / 100.0;
   if (byteStream.size() == 0) {

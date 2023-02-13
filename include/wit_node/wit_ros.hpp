@@ -41,6 +41,7 @@ class WitRos {
    **********************/
   void advertiseTopics(NodeHandle &nh);
   Publisher imu_pub_;
+  Publisher mag_pub_;
   Publisher gps_pub_;
   Publisher raw_data_pub_;
   Publisher related_yaw_pub_;
