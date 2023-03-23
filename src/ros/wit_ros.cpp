@@ -78,8 +78,8 @@ bool WitRos::update() {
 }
 
 void WitRos::advertiseTopics(NodeHandle &nh) {
-  imu_pub_ = nh.advertise<sensor_msgs::Imu>("/imu/data", 1000);
-  mag_pub_ = nh.advertise<sensor_msgs::MagneticField>("/imu/mag", 1000);
+  imu_pub_ = nh.advertise<sensor_msgs::Imu>("/wit/imu_data", 1000);
+  mag_pub_ = nh.advertise<sensor_msgs::MagneticField>("/wit/mag_data", 1000);
   gps_pub_ = nh.advertise<sensor_msgs::NavSatFix>("/gps", 1000);
   raw_data_pub_ = nh.advertise<wit_node::ImuGpsRaw>("raw_data", 1000);
   related_yaw_pub_ = nh.advertise<std_msgs::Float64>("related_yaw", 1000);
@@ -161,9 +161,14 @@ void WitRos::processStreamData() {
      0.0,     0.0,      0.00001};
      
     imu_msg.linear_acceleration_covariance =
+    {0.0000001,  0.0,  0.0,
+     0.0,   0.0000001, 0.0,
+     0.0,   0.0,  0.0000001};
+
+    mag_msg.magnetic_field_covariance =
     {0.01,  0.0,  0.0,
      0.0,   0.01, 0.0,
-     0.0,   0.0,  0.01};
+     0.0,   0.0,  0.01};  
 
     gps_msg.altitude = data.altitude;
     gps_msg.latitude = data.latitude;
