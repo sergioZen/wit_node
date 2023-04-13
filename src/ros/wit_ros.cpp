@@ -72,7 +72,7 @@ bool WitRos::update() {
         "Wit : arm serial port is not connetced, please connect the arm.");
     return false;
   }
-  ROS_INFO("processStreamData");
+  //ROS_INFO("processStreamData");
   processStreamData();
   return true;
 }
