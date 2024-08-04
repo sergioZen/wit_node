@@ -124,11 +124,11 @@ void WitRos::processStreamData() {
     // Wit 901B gives linar acceleration in G: Convert G to MeterPerSecond for ROS
     imu_msg.linear_acceleration.x = data.a[0]; //*9.80665;
     imu_msg.linear_acceleration.y = data.a[1]; //*9.80665;
-    imu_msg.linear_acceleration.z = 0; //Remove gravity: data.a[2]; //*9.80665;
+    imu_msg.linear_acceleration.z = data.a[2];  //Remove gravity: data.a[2]; //*9.80665;
 
     // Wit 901B gives angular velocities in DegreesPerSeconde: Convert to RadsPerSecond for ROS
-    imu_msg.angular_velocity.x = 0; //Remove roll (balanceo) data.w[0]; //*0.0174;
-    imu_msg.angular_velocity.y = 0; //Remove pitch (inclinación, arriba y abajo) data.w[1]; //*0.0174;
+    imu_msg.angular_velocity.x = data.w[0]; //0; //Remove roll (balanceo) data.w[0]; //*0.0174;
+    imu_msg.angular_velocity.y = data.w[1]; //0; //Remove pitch (inclinación, arriba y abajo) data.w[1]; //*0.0174;
     imu_msg.angular_velocity.z = data.w[2]; //User yaw (giro) //*0.0174;
 
     // Wit901B magnetic field already converted to Teslas for ROS:
